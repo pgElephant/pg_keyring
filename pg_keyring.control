@@ -1,0 +1,8 @@
+# pg_keyring: Keyring Extension for PostgreSQL
+
+
+# Extension information
+default_version = '1.0'
+module_pathname = '$libdir/pg_keyring'
+relocatable = true
+

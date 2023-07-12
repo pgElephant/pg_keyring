@@ -1,2 +1,1 @@
-# pg_keyring
-PostgreSQL Extension for Encrypted Keys. 
+# pg_kms
