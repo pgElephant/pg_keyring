@@ -1,3 +1,4 @@
+*.pg_kms.dylib
 # Prerequisites
 *.d
 
