@@ -9,13 +9,13 @@ CREATE OR REPLACE FUNCTION keyring_key_generate(
   protocol text,
   key_size integer
 )
-RETURNS VOID AS
+RETURNS TEXT AS
 'MODULE_PATHNAME', 'keyring_key_generate'
 LANGUAGE C STRICT;
 
 CREATE OR REPLACE FUNCTION keyring_key_remove(
   password text
 )
-RETURNS VOID AS
+RETURNS TEXT AS
 'MODULE_PATHNAME', 'keyring_key_remove'
 LANGUAGE C STRICT;
