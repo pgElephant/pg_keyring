@@ -20,13 +20,31 @@ PG_FUNCTION_INFO_V1(keyring_key_remove);
 
 void _PG_init(void);
 
-void _PG_init(void) 
+void _PG_init(void)
 {
-    /* Set the value for keyring_file_data */
-    SetConfigOption("keyring_file_data", "/usr/local/mysql/mysql-keyring/keyring", PGC_USERSET, PGC_S_FILE);
+    /* Set the default value for keyring_file_data */
+    DefineCustomStringVariable("pg_keyring.keyring_file_data",
+                               "Path to the keyring data file",
+                               NULL,
+                               &keyring_file_data,
+                               NULL,
+                               PGC_USERSET,
+                               GUC_SUPERUSER_ONLY,
+                               NULL,
+                               NULL,
+                               NULL);
 
-    /* Set the value for keyring_file_password */
-    SetConfigOption("keyring_file_password", "/path/to/password_file", PGC_USERSET, PGC_S_FILE);
+    /* Set the default value for keyring_file_password */
+    DefineCustomStringVariable("pg_keyring.keyring_file_password",
+                               "Path to the keyring password file",
+                               NULL,
+                               &keyring_file_password,
+                               NULL,
+                               PGC_USERSET,
+                               GUC_SUPERUSER_ONLY,
+                               NULL,
+                               NULL,
+                               NULL);
 }
 
 /*
@@ -44,15 +62,14 @@ keyring_key_generate(PG_FUNCTION_ARGS)
     char* password = text_to_cstring(txtPassword);
     char* encryptionProtocol = text_to_cstring(txtProtocol);
     FILE* passwordFile;
-    const char* passwordFileName;
-
+ 
     /* Only AES is supported */
     if (strcmp(encryptionProtocol, "AES") != 0)
     {
         ereport(ERROR, (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
                         errmsg("Invalid encryption protocol. Only AES is supported.")));
     }
-
+ 
     /* Key length must be a positive multiple of 8 */
     if (keyLength <= 0 || keyLength % 8 != 0)
     {
@@ -60,14 +77,24 @@ keyring_key_generate(PG_FUNCTION_ARGS)
                         errmsg("Invalid key size. Key size must be a positive multiple of 8.")));
     }
 
-    passwordFileName = GetConfigOption("keyring_file_password", true, false);
+    if (!keyring_file_password || strlen(keyring_file_password) == 0)
+    {
+        ereport(ERROR, (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+                        errmsg("Invalid password file name. Set keyring_file_password in postgresql.conf.")));
+    }
+
+    if (!keyring_file_password || strlen(keyring_file_password) == 0)
+    {
+        ereport(ERROR, (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+                        errmsg("Invalid key file name. Set keyring_file_data in postgresql.conf.")));
+    }
 
     /* Create a new file to store the password */
-    passwordFile = fopen(passwordFileName, "w");
+    passwordFile = fopen(keyring_file_password, "w");
     if (passwordFile == NULL)
     {
-        ereport(ERROR, (errcode(ERRCODE_IO_ERROR),
-                        errmsg("Failed to open the new password file for writing.")));
+        ereport(ERROR, (errcode_for_file_access(),
+                        errmsg("Could not write password file \"(%s)\"", keyring_file_password)));
     }
 
     fprintf(passwordFile, "%s\n", password);
@@ -76,9 +103,8 @@ keyring_key_generate(PG_FUNCTION_ARGS)
     pfree(password);
     pfree(encryptionProtocol);
 
-    PG_RETURN_NULL();
+    PG_RETURN_TEXT_P(cstring_to_text_with_len("OK",2));
 }
-
 
 /*
  * keyring_key_remove
@@ -89,25 +115,46 @@ Datum
 keyring_key_remove(PG_FUNCTION_ARGS)
 {
     text* txtPassword = PG_GETARG_TEXT_P(0);
+    char* storedPassword = NULL;
+    FILE* passwordFile;
     char* password = text_to_cstring(txtPassword);
-    const char *filename; 
- 
+
+    /*
+     * Verify that the provided password matches the content of the
+     * keyring_file_password file.
+     */
+    passwordFile = fopen(keyring_file_password, "r");
+    if (passwordFile != NULL)
+    {
+        char buffer[1024];
+        if (fgets(buffer, sizeof(buffer), passwordFile) != NULL)
+        {
+            char* newline = NULL;
+            storedPassword = strdup(buffer);
+            /* Remove trailing newline character if present */
+            newline = strchr(storedPassword, '\n');
+            if (newline != NULL)
+                *newline = '\0';
+        }
+        fclose(passwordFile);
+    }
+    if (storedPassword == NULL || strcmp(password, storedPassword) != 0)
+    {
+        ereport(ERROR, (errcode(ERRCODE_INVALID_PASSWORD),
+                        errmsg("Invalid password or permission denied")));
+    }
+    free(storedPassword);
+    pfree(password);
+
     /*
      * Remove the file associated with keyring_file_password. The filename is
      * stored in the keyring_file_password GUC variable.
      */
-    filename = GetConfigOption("keyring_file_password", true, false);
-    if (filename == NULL)
-    {
-        ereport(ERROR, (errcode(ERRCODE_INTERNAL_ERROR),
-                        errmsg("keyring_file_password not set")));
-    }
-    if (unlink(filename) != 0)
+    if (unlink(keyring_file_password) != 0)
     {
         ereport(ERROR, (errcode_for_file_access(),
                         errmsg("Failed to remove the file associated with keyring_file_password")));
     }
-    pfree(password);
 
-    PG_RETURN_NULL();
+    PG_RETURN_TEXT_P(cstring_to_text_with_len("OK", 2));
 }

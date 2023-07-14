@@ -1,0 +1,205 @@
+2023-07-15 00:07:13.461 PKT [68210] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:07:13.462 PKT [68210] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:07:13.462 PKT [68210] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:07:13.462 PKT [68210] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:07:13.464 PKT [68213] LOG:  database system was shut down at 2023-07-15 00:07:08 PKT
+2023-07-15 00:07:13.465 PKT [68210] LOG:  database system is ready to accept connections
+2023-07-15 00:08:10.773 PKT [68220] ERROR:  Invalid encryption protocol. Only AES is supported.
+2023-07-15 00:08:10.773 PKT [68220] STATEMENT:  select keyring_key_generate('Pass', 'abc',24);
+2023-07-15 00:08:17.361 PKT [68220] ERROR:  Failed to open the new password file for writing.
+2023-07-15 00:08:17.361 PKT [68220] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:10:21.025 PKT [68307] FATAL:  lock file "postmaster.pid" already exists
+2023-07-15 00:10:21.025 PKT [68307] HINT:  Is another postmaster (PID 68210) running in data directory "/usr/local/pgsql/bin/data"?
+2023-07-15 00:10:23.425 PKT [68313] FATAL:  lock file "postmaster.pid" already exists
+2023-07-15 00:10:23.425 PKT [68313] HINT:  Is another postmaster (PID 68210) running in data directory "/usr/local/pgsql/bin/data"?
+2023-07-15 00:10:26.799 PKT [68210] LOG:  received fast shutdown request
+2023-07-15 00:10:26.800 PKT [68210] LOG:  aborting any active transactions
+2023-07-15 00:10:26.801 PKT [68210] LOG:  background worker "logical replication launcher" (PID 68216) exited with exit code 1
+2023-07-15 00:10:26.801 PKT [68211] LOG:  shutting down
+2023-07-15 00:10:26.801 PKT [68211] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:10:26.804 PKT [68211] LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.003 s; sync files=15, longest=0.001 s, average=0.001 s; distance=58 kB, estimate=58 kB; lsn=0/14A7388, redo lsn=0/14A7388
+2023-07-15 00:10:26.806 PKT [68210] LOG:  database system is shut down
+2023-07-15 00:10:26.933 PKT [68315] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:10:26.935 PKT [68315] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:10:26.935 PKT [68315] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:10:26.935 PKT [68315] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:10:26.938 PKT [68318] LOG:  database system was shut down at 2023-07-15 00:10:26 PKT
+2023-07-15 00:10:26.941 PKT [68315] LOG:  database system is ready to accept connections
+2023-07-15 00:10:31.533 PKT [68323] ERROR:  Failed to open the new password file for writing.
+2023-07-15 00:10:31.533 PKT [68323] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:10:42.050 PKT [68343] ERROR:  Failed to open the new password file for writing.
+2023-07-15 00:10:42.050 PKT [68343] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:11:47.705 PKT [68315] LOG:  received fast shutdown request
+2023-07-15 00:11:47.706 PKT [68315] LOG:  aborting any active transactions
+2023-07-15 00:11:47.708 PKT [68315] LOG:  background worker "logical replication launcher" (PID 68321) exited with exit code 1
+2023-07-15 00:11:47.708 PKT [68316] LOG:  shutting down
+2023-07-15 00:11:47.708 PKT [68316] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:11:47.710 PKT [68316] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7438, redo lsn=0/14A7438
+2023-07-15 00:11:47.713 PKT [68315] LOG:  database system is shut down
+2023-07-15 00:11:47.843 PKT [68426] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:11:47.844 PKT [68426] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:11:47.844 PKT [68426] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:11:47.845 PKT [68426] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:11:47.848 PKT [68429] LOG:  database system was shut down at 2023-07-15 00:11:47 PKT
+2023-07-15 00:11:47.851 PKT [68426] LOG:  database system is ready to accept connections
+2023-07-15 00:11:50.194 PKT [68434] ERROR:  Failed to open the new password file for writing.
+2023-07-15 00:11:50.194 PKT [68434] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:12:19.875 PKT [68426] LOG:  received fast shutdown request
+2023-07-15 00:12:19.876 PKT [68426] LOG:  aborting any active transactions
+2023-07-15 00:12:19.878 PKT [68426] LOG:  background worker "logical replication launcher" (PID 68432) exited with exit code 1
+2023-07-15 00:12:19.878 PKT [68427] LOG:  shutting down
+2023-07-15 00:12:19.878 PKT [68427] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:12:19.880 PKT [68427] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A74E8, redo lsn=0/14A74E8
+2023-07-15 00:12:19.883 PKT [68426] LOG:  database system is shut down
+2023-07-15 00:12:20.011 PKT [68504] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:12:20.012 PKT [68504] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:12:20.012 PKT [68504] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:12:20.013 PKT [68504] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:12:20.015 PKT [68507] LOG:  database system was shut down at 2023-07-15 00:12:19 PKT
+2023-07-15 00:12:20.018 PKT [68504] LOG:  database system is ready to accept connections
+2023-07-15 00:12:24.112 PKT [68512] ERROR:  Failed to open the new password file for writing.
+	 Set pg_keyring.keyring_file_data and keyring_file_password in postgresql.conf
+2023-07-15 00:12:24.112 PKT [68512] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:16:40.662 PKT [68504] LOG:  received fast shutdown request
+2023-07-15 00:16:40.663 PKT [68504] LOG:  aborting any active transactions
+2023-07-15 00:16:40.665 PKT [68504] LOG:  background worker "logical replication launcher" (PID 68510) exited with exit code 1
+2023-07-15 00:16:40.665 PKT [68505] LOG:  shutting down
+2023-07-15 00:16:40.665 PKT [68505] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:16:40.667 PKT [68505] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7598, redo lsn=0/14A7598
+2023-07-15 00:16:40.670 PKT [68504] LOG:  database system is shut down
+2023-07-15 00:16:40.800 PKT [68707] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:16:40.802 PKT [68707] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:16:40.802 PKT [68707] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:16:40.802 PKT [68707] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:16:40.805 PKT [68710] LOG:  database system was shut down at 2023-07-15 00:16:40 PKT
+2023-07-15 00:16:40.809 PKT [68707] LOG:  database system is ready to accept connections
+2023-07-15 00:16:47.509 PKT [68715] ERROR:  could not write password file "(null)\n Set pg_keyring.keyring_file_data and keyring_file_password in postgresql.conf
+	: Bad address
+2023-07-15 00:16:47.509 PKT [68715] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:17:23.645 PKT [68707] LOG:  received fast shutdown request
+2023-07-15 00:17:23.645 PKT [68707] LOG:  aborting any active transactions
+2023-07-15 00:17:23.647 PKT [68707] LOG:  background worker "logical replication launcher" (PID 68713) exited with exit code 1
+2023-07-15 00:17:23.647 PKT [68708] LOG:  shutting down
+2023-07-15 00:17:23.648 PKT [68708] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:17:23.650 PKT [68708] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7648, redo lsn=0/14A7648
+2023-07-15 00:17:23.652 PKT [68707] LOG:  database system is shut down
+2023-07-15 00:17:23.773 PKT [68787] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:17:23.774 PKT [68787] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:17:23.774 PKT [68787] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:17:23.774 PKT [68787] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:17:23.776 PKT [68790] LOG:  database system was shut down at 2023-07-15 00:17:23 PKT
+2023-07-15 00:17:23.779 PKT [68787] LOG:  database system is ready to accept connections
+2023-07-15 00:17:27.044 PKT [68795] ERROR:  could not write password file "(null)"
+	Set pg_keyring.keyring_file_data and keyring_file_password in postgresql.conf
+	: Bad address
+2023-07-15 00:17:27.044 PKT [68795] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:20:46.961 PKT [68787] LOG:  received fast shutdown request
+2023-07-15 00:20:46.961 PKT [68787] LOG:  aborting any active transactions
+2023-07-15 00:20:46.963 PKT [68787] LOG:  background worker "logical replication launcher" (PID 68793) exited with exit code 1
+2023-07-15 00:20:46.963 PKT [68788] LOG:  shutting down
+2023-07-15 00:20:46.964 PKT [68788] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:20:46.966 PKT [68788] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A76F8, redo lsn=0/14A76F8
+2023-07-15 00:20:46.969 PKT [68787] LOG:  database system is shut down
+2023-07-15 00:20:47.098 PKT [68912] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:20:47.099 PKT [68912] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:20:47.099 PKT [68912] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:20:47.100 PKT [68912] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:20:47.103 PKT [68915] LOG:  database system was shut down at 2023-07-15 00:20:46 PKT
+2023-07-15 00:20:47.106 PKT [68912] LOG:  database system is ready to accept connections
+2023-07-15 00:20:50.505 PKT [68920] ERROR:  Invalid password file name. Set keyring_file_password in postgresql.conf.
+2023-07-15 00:20:50.505 PKT [68920] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:22:48.110 PKT [68912] LOG:  received fast shutdown request
+2023-07-15 00:22:48.111 PKT [68912] LOG:  aborting any active transactions
+2023-07-15 00:22:48.112 PKT [68912] LOG:  background worker "logical replication launcher" (PID 68918) exited with exit code 1
+2023-07-15 00:22:48.113 PKT [68913] LOG:  shutting down
+2023-07-15 00:22:48.113 PKT [68913] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:22:48.115 PKT [68913] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.002 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A77A8, redo lsn=0/14A77A8
+2023-07-15 00:22:48.117 PKT [68912] LOG:  database system is shut down
+2023-07-14 19:22:48.241 GMT [68948] LOG:  syntax error in file "/usr/local/pgsql/bin/data/postgresql.conf" line 1, near token "/"
+2023-07-14 19:22:48.241 GMT [68948] LOG:  syntax error in file "/usr/local/pgsql/bin/data/postgresql.conf" line 2, near token "/"
+2023-07-14 19:22:48.241 GMT [68948] FATAL:  configuration file "/usr/local/pgsql/bin/data/postgresql.conf" contains errors
+2023-07-15 00:23:06.212 PKT [68954] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:23:06.213 PKT [68954] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:23:06.213 PKT [68954] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:23:06.214 PKT [68954] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:23:06.216 PKT [68957] LOG:  database system was shut down at 2023-07-15 00:22:48 PKT
+2023-07-15 00:23:06.220 PKT [68954] LOG:  database system is ready to accept connections
+2023-07-15 00:23:10.842 PKT [68962] ERROR:  Invalid password file name. Set keyring_file_password in postgresql.conf.
+2023-07-15 00:23:10.842 PKT [68962] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:23:17.566 PKT [68962] ERROR:  Invalid password file name. Set keyring_file_password in postgresql.conf.
+2023-07-15 00:23:17.566 PKT [68962] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+2023-07-15 00:24:05.139 PKT [68954] LOG:  received fast shutdown request
+2023-07-15 00:24:05.140 PKT [68954] LOG:  aborting any active transactions
+2023-07-15 00:24:05.142 PKT [68954] LOG:  background worker "logical replication launcher" (PID 68960) exited with exit code 1
+2023-07-15 00:24:05.142 PKT [68955] LOG:  shutting down
+2023-07-15 00:24:05.142 PKT [68955] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:24:05.145 PKT [68955] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7858, redo lsn=0/14A7858
+2023-07-15 00:24:05.148 PKT [68954] LOG:  database system is shut down
+2023-07-15 00:24:05.277 PKT [69036] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:24:05.278 PKT [69036] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:24:05.279 PKT [69036] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:24:05.279 PKT [69036] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:24:05.282 PKT [69039] LOG:  database system was shut down at 2023-07-15 00:24:05 PKT
+2023-07-15 00:24:05.285 PKT [69036] LOG:  database system is ready to accept connections
+2023-07-15 00:24:08.480 PKT [69044] ERROR:  Invalid password file name. Set keyring_file_password in postgresql.conf.
+2023-07-15 00:24:08.480 PKT [69044] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+
+(null)
+2023-07-15 00:24:20.746 PKT [69036] LOG:  received fast shutdown request
+2023-07-15 00:24:20.747 PKT [69036] LOG:  aborting any active transactions
+2023-07-15 00:24:20.748 PKT [69036] LOG:  background worker "logical replication launcher" (PID 69042) exited with exit code 1
+2023-07-15 00:24:20.749 PKT [69037] LOG:  shutting down
+2023-07-15 00:24:20.749 PKT [69037] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:24:20.750 PKT [69037] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.002 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7908, redo lsn=0/14A7908
+2023-07-15 00:24:20.752 PKT [69036] LOG:  database system is shut down
+2023-07-15 00:24:20.882 PKT [69107] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:24:20.883 PKT [69107] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:24:20.883 PKT [69107] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:24:20.884 PKT [69107] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:24:20.887 PKT [69110] LOG:  database system was shut down at 2023-07-15 00:24:20 PKT
+2023-07-15 00:24:20.890 PKT [69107] LOG:  database system is ready to accept connections
+2023-07-15 00:24:23.338 PKT [69115] ERROR:  Invalid password file name. Set keyring_file_password in postgresql.conf.
+2023-07-15 00:24:23.338 PKT [69115] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+
+(null)
+2023-07-15 00:24:35.149 PKT [69107] LOG:  received fast shutdown request
+2023-07-15 00:24:35.150 PKT [69107] LOG:  aborting any active transactions
+2023-07-15 00:24:35.152 PKT [69107] LOG:  background worker "logical replication launcher" (PID 69113) exited with exit code 1
+2023-07-15 00:24:35.152 PKT [69108] LOG:  shutting down
+2023-07-15 00:24:35.152 PKT [69108] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:24:35.154 PKT [69108] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7980, redo lsn=0/14A7980
+2023-07-15 00:24:35.157 PKT [69107] LOG:  database system is shut down
+2023-07-15 00:24:35.280 PKT [69249] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:24:35.282 PKT [69249] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:24:35.282 PKT [69249] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:24:35.282 PKT [69249] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:24:35.285 PKT [69252] LOG:  database system was shut down at 2023-07-15 00:24:35 PKT
+2023-07-15 00:24:35.287 PKT [69249] LOG:  database system is ready to accept connections
+2023-07-15 00:24:38.616 PKT [69257] ERROR:  Invalid password file name. Set keyring_file_password in postgresql.conf.
+2023-07-15 00:24:38.616 PKT [69257] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+
+(null)
+2023-07-15 00:25:07.264 PKT [69249] LOG:  received fast shutdown request
+2023-07-15 00:25:07.265 PKT [69249] LOG:  aborting any active transactions
+2023-07-15 00:25:07.266 PKT [69249] LOG:  background worker "logical replication launcher" (PID 69255) exited with exit code 1
+2023-07-15 00:25:07.266 PKT [69250] LOG:  shutting down
+2023-07-15 00:25:07.267 PKT [69250] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:25:07.269 PKT [69250] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7A30, redo lsn=0/14A7A30
+2023-07-15 00:25:07.271 PKT [69249] LOG:  database system is shut down
+2023-07-15 00:25:07.396 PKT [69368] LOG:  starting PostgreSQL 17devel on aarch64-apple-darwin22.1.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2023-07-15 00:25:07.397 PKT [69368] LOG:  listening on IPv6 address "::1", port 5432
+2023-07-15 00:25:07.397 PKT [69368] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-07-15 00:25:07.398 PKT [69368] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2023-07-15 00:25:07.400 PKT [69371] LOG:  database system was shut down at 2023-07-15 00:25:07 PKT
+2023-07-15 00:25:07.402 PKT [69368] LOG:  database system is ready to accept connections
+2023-07-15 00:25:10.744 PKT [69376] ERROR:  Invalid dpassword file name. Set keyring_file_password in postgresql.conf.
+2023-07-15 00:25:10.744 PKT [69376] STATEMENT:  select keyring_key_generate('Pass', 'AES', 24);
+
+(null)
+2023-07-15 00:25:25.136 PKT [69368] LOG:  received fast shutdown request
+2023-07-15 00:25:25.137 PKT [69368] LOG:  aborting any active transactions
+2023-07-15 00:25:25.138 PKT [69368] LOG:  background worker "logical replication launcher" (PID 69374) exited with exit code 1
+2023-07-15 00:25:25.138 PKT [69369] LOG:  shutting down
+2023-07-15 00:25:25.139 PKT [69369] LOG:  checkpoint starting: shutdown immediate
+2023-07-15 00:25:25.140 PKT [69369] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.002 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14A7AE0, redo lsn=0/14A7AE0
+2023-07-15 00:25:25.143 PKT [69368] LOG:  database system is shut down
