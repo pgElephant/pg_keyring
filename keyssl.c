@@ -3,92 +3,71 @@
 #include <openssl/ssl.h>
 #include <openssl/pem.h>
 
-#include "pg_kms.h"
+#include "pg_keyring.h"
 
-static int pgkms_get_ssl_key();
+static int  _generate_ssl_key(unsigned char* key);
 
-int
-pg_keyring_get_key(char *key_type, char** key)
+/* 
+ * Generates an AES-256 key for use with SSL
+ * Returns 0 on success, -1 on error
+ */
+int 
+_generate_ssl_key(unsigned char* key)
 {
-    int ret = 0;
+    EVP_CIPHER_CTX *ctx = NULL;
+    int success = 0;
+    unsigned char* salt = NULL;
+    unsigned char* data = NULL;
+    int datal = 0;
+    int count = 1;
+
+    if (key == NULL)
+        return -1;
+  
+    ctx = EVP_CIPHER_CTX_new();
+    if (!ctx)
+        return -2;
+  
+    /* Disable padding for the key, we want a 256 bit key */
+    success = EVP_CIPHER_CTX_set_padding(ctx, 0);
+    if (!success)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return -3;
+    }
+
+    /* Generate the key */
+    success = EVP_BytesToKey(EVP_aes_256_ecb(), EVP_sha256(), salt, data, datal, count, key, NULL);
+    if (success != 1)
+    {
+        EVP_CIPHER_CTX_free(ctx);
+        return -4;
+    }
+
+    EVP_CIPHER_CTX_free(ctx);
+    return 0;
+}
+
+
+/* 
+ * Get a key from the keyring
+ * Returns 0 on success, -1 on error
+ */
+int
+pg_keyring_get_key(char key_type, unsigned char *key)
+{
+    /* Ensure that we have a valid key pointer */
+    if (key == NULL)
+        return -1;
+ 
     switch (key_type)
     {
     case SSL_KEY:
-        pgkms_get_ssl_key();
-        ret = 0;
-        break;
-
-    case AWS_KEY:
-        if (pgkms_get_aws_key() == 1)
-            ret = 1;
+        _generate_ssl_key(key);
         break;
     default:
-        ret = -1;
+        return -5;
         break;
     }
-    return ret;    
- }
-
-int
-ssl_getkey()
-{
-    SSL_CTX *context; /* A context for SSL/TLS connections. */
-    SSL *ssl; /* An SSL/TLS connection. */
-    EVP_PKEY *key; /* The private key. */
-
-    /* Initialize the OpenSSL library. */
-    if (SSL_library_init() != 1)
-    {
-        return 1;
-    }
-    SSL_load_error_strings();
-    OpenSSL_add_all_algorithms();
-
-    /* Create a context for SSL/TLS connections. */
-    context = SSL_CTX_new(TLS_method());
-    if (context == NULL)
-    {
-        return 1;
-    }
-
-    /* Load the private key file. */
-    if (SSL_CTX_use_PrivateKey_file(context, "private_key.pem", SSL_FILETYPE_PEM) != 1)
-    {
-        SSL_CTX_free(context);
-        return 1;
-    }
-
-    /* Load the certificate file. */
-    if (SSL_CTX_use_certificate_file(context, "certificate.pem", SSL_FILETYPE_PEM) != 1)
-    {
-        SSL_CTX_free(context);
-        return 1;
-    }
-
-    /* Create an SSL/TLS connection. */
-    ssl = SSL_new(context);
-    if (ssl == NULL)
-    {
-        SSL_CTX_free(context);
-        return 1;
-    }
-
-    /* Get the private key. */
-    key = SSL_CTX_get0_privatekey(context);
-    if (key == NULL)
-    {
-        SSL_free(ssl);
-        SSL_CTX_free(context);
-        return 1;
-    }
-
-    /* Print the private key. */
-    PEM_write_PrivateKey(stdout, key, NULL, NULL, 0, NULL, NULL);
-
-    /* Clean up. */
-    SSL_free(ssl);
-    SSL_CTX_free(context);
-    EVP_PKEY_free(key);
-
-    return 0;
+    return 0;    
 }

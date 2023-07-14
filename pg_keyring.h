@@ -2,6 +2,9 @@
 #ifndef PG_KMS
 #define PG_KMS
 
-int pg_keyring_get_key(char *key_type, char** key);
+#define SSL_KEY 0
+#define KEY_LENGTH 256
 
-#endif
+int pg_keyring_get_key(char key_type, unsigned char *key);
+
+#endif /* PG_KMS */
